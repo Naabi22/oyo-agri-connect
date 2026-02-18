@@ -1,65 +1,72 @@
-import Image from "next/image";
+import Link from "next/link";
+import Header from "../components/Header";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-white relative">
+      <Header />
+
+      <main className="max-w-7xl mx-auto px-12 pt-40 flex flex-col lg:flex-row items-center gap-16">
+        {/* Left Side: Illustration Box */}
+        <div className="lg:w-1/2 flex justify-center">
+          <div className="relative">
+            <div className="bg-[#F5F7F5] rounded-[40px] w-[350px] h-[350px] lg:w-[480px] lg:h-[400px] flex items-center justify-center border border-gray-50 shadow-sm">
+              <span className="text-[150px]">🚜</span>
+            </div>
+            {/* Active Farmers Badge */}
+            <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-100">
+              <div className="w-10 h-10 bg-[#E8F5E9] rounded-full flex items-center justify-center text-[#4CAF50]">
+                👥
+              </div>
+              <div>
+                <p className="text-[10px] text-gray-400 font-bold uppercase">
+                  Active Farmers
+                </p>
+                <p className="text-lg font-black text-[#2D5A27]">10,000+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Text & Actions */}
+        <div className="lg:w-1/2 text-left space-y-6">
+          <p className="text-[#4CAF50] font-bold text-sm tracking-widest uppercase">
+            Bridging the gap in agriculture
+          </p>
+
+          <h1 className="text-6xl font-black text-[#1b3d1a] leading-tight">
+            Join Oyo <br /> Agri-Connect
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <p className="text-gray-500 text-lg max-w-md">
+            Rent the equipment you need or share yours with fellow farmers
+            across Oyo State. Let's grow together.
+          </p>
+
+          <div className="flex items-center gap-4 pt-4">
+            <Link href="/dashboard">
+              <button className="bg-[#4CAF50] text-white px-10 py-4 rounded-xl font-bold shadow-lg">
+                Get Started
+              </button>
+            </Link>
+            <button className="text-[#1b3d1a] px-8 py-4 rounded-xl font-bold hover:bg-gray-50">
+              Learn More
+            </button>
+          </div>
+
+          <p className="text-sm text-gray-400">
+            Already have an account?{" "}
+            <span className="text-[#4CAF50] font-bold">Login here</span>
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
       </main>
+
+      {/* Footer Badges */}
+      <footer className="absolute bottom-10 w-full px-12 flex items-center gap-12 text-gray-300 font-bold text-xs">
+        <span>OyoAgric</span>
+        <span>SecurePay</span>
+        <span>RuralDev</span>
+      </footer>
     </div>
   );
 }
