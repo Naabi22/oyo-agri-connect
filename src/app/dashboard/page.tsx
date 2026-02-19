@@ -1,35 +1,14 @@
 import Link from "next/link";
 import Header from "../../components/Header";
+import BottomNav from "../../components/BottomNav";
+import { equipment } from "../../lib/mockData";
+
 export default function Dashboard() {
+  const nearbyEquipment = equipment.filter(item => item.dist).slice(0, 3);
+
   return (
     <div className="min-h-screen bg-[#F8F9F8] pb-32">
-      {/* Updated Header with Location Picker */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md flex justify-between items-center px-8 py-4 z-50 border-b border-gray-100">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#4CAF50] rounded-lg flex items-center justify-center text-white text-xs font-bold">
-            🚜
-          </div>
-          <span className="font-bold text-[#1b3d1a]">Oyo Agri-Connect</span>
-        </div>
-
-        {/* Location Picker from your design */}
-        <div className="bg-[#F1F3F1] px-4 py-2 rounded-full flex items-center gap-2 text-xs font-semibold text-[#1b3d1a]">
-          <span className="text-[#4CAF50]">📍</span> Oyo Central
-          <span className="text-gray-400 text-[10px]">▼</span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <div className="flex items-center bg-[#E8F5E9] rounded-full p-1 text-[10px] font-bold">
-            <span className="bg-[#4CAF50] text-white px-3 py-1 rounded-full">
-              EN
-            </span>
-            <span className="text-gray-400 px-3 py-1">YO</span>
-          </div>
-          <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500">
-            🔔
-          </div>
-        </div>
-      </nav>
+      <Header showLocation />
 
       <main className="max-w-6xl mx-auto px-6 pt-28">
         {/* Header Section */}
@@ -103,37 +82,19 @@ export default function Dashboard() {
         {/* Nearby for You Section */}
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-xl font-black text-[#1b3d1a]">Nearby for You</h3>
-          <button className="text-[#4CAF50] text-sm font-bold">
+          <Link href="/search" className="text-[#4CAF50] text-sm font-bold">
             See all nearby →
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              name: "Massey Ferguson 375",
-              price: "25,000",
-              rating: "4.9",
-              dist: "2.4 km",
-            },
-            {
-              name: "John Deere W150",
-              price: "45,000",
-              rating: "4.7",
-              dist: "4.1 km",
-            },
-            {
-              name: "Honda Pump GX160",
-              price: "5,500",
-              rating: "4.8",
-              dist: "1.2 km",
-            },
-          ].map((item, i) => (
+          {nearbyEquipment.map((item, i) => (
             <div
               key={i}
               className="bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm"
             >
-              <div className="h-40 bg-gray-200 relative">
+              <div className="h-40 bg-gray-200 relative flex items-center justify-center text-6xl">
+                {item.image}
                 <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[#4CAF50] text-[10px] font-bold px-3 py-1 rounded-full uppercase">
                   Available
                 </div>
@@ -158,9 +119,11 @@ export default function Dashboard() {
                     </p>
                     <p className="text-[#1b3d1a] font-black">₦{item.price}</p>
                   </div>
-                  <button className="bg-[#F1F8F1] text-[#4CAF50] px-4 py-2 rounded-xl text-xs font-bold">
-                    View
-                  </button>
+                  <Link href="/details">
+                    <button className="bg-[#F1F8F1] text-[#4CAF50] px-4 py-2 rounded-xl text-xs font-bold">
+                      View
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -168,17 +131,7 @@ export default function Dashboard() {
         </div>
       </main>
 
-      {/* Floating Bottom Nav from Design */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-gray-100 px-8 py-4 rounded-full shadow-2xl flex items-center gap-12 z-50">
-        <div className="flex flex-col items-center gap-1">
-          <span className="text-xl text-[#4CAF50]">🏠</span>
-          <span className="text-[10px] font-bold text-[#4CAF50]">HOME</span>
-        </div>
-        <span className="text-xl text-gray-300">🔍</span>
-        <span className="text-xl text-gray-300">📄</span>
-        <span className="text-xl text-gray-300">🚜</span>
-        <span className="text-xl text-gray-300">👤</span>
-      </div>
+      <BottomNav activeItem="home" />
     </div>
   );
 }

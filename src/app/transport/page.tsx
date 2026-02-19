@@ -1,38 +1,15 @@
 import Header from '../../components/Header';
 import Link from 'next/link';
+import BottomNav from '../../components/BottomNav';
+import StepIndicator from '../../components/StepIndicator';
 
 export default function TransportOption() {
   return (
     <div className="min-h-screen bg-[#F8F9F8]">
-      {/* Top Navigation */}
-      <nav className="flex justify-between items-center px-8 py-4 bg-white border-b border-gray-100">
-        <div className="flex items-center gap-2 text-[#1b3d1a] font-bold text-sm">
-          <Link href="/location" className="flex items-center gap-2">
-            <span className="bg-gray-100 p-1 rounded-md text-xs">🚚</span> Transport
-          </Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-xs">🚜</div>
-          <span className="font-black text-[#1b3d1a]">Oyo Central</span>
-        </div>
-        <div className="flex gap-2 text-xs font-bold uppercase tracking-widest">
-          <span className="text-[#4CAF50]">EN</span>
-          <span className="text-gray-300">|</span>
-          <span className="text-gray-300">YO</span>
-        </div>
-      </nav>
+      <Header backHref="/location" title="Transport" showLocation />
 
-      <main className="max-w-5xl mx-auto pt-10 px-6">
-        {/* Step Indicator */}
-        <div className="mb-12">
-          <div className="flex justify-between items-end mb-2">
-            <p className="text-[#4CAF50] text-[10px] font-black uppercase tracking-widest">Step 3 of 4</p>
-            <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">75% Complete</p>
-          </div>
-          <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden flex">
-            <div className="w-3/4 h-full bg-[#4CAF50]"></div>
-          </div>
-        </div>
+      <main className="max-w-5xl mx-auto pt-24 px-6">
+        <StepIndicator currentStep={3} totalSteps={4} statusLabel="75% Complete" />
 
         <div className="mb-12">
           <h1 className="text-3xl font-black text-[#1b3d1a] mb-2">How will you get your equipment?</h1>
@@ -59,8 +36,8 @@ export default function TransportOption() {
               Professional transport to your specified farm coordinates. Includes loading and unloading assistance.
             </p>
             <div className="mt-auto">
-                <p className="text-[8px] font-black text-gray-300 uppercase tracking-widest mb-1">Calculated Fee</p>
-                <p className="text-xl font-black text-[#1b3d1a]">₦15,000</p>
+              <p className="text-[8px] font-black text-gray-300 uppercase tracking-widest mb-1">Calculated Fee</p>
+              <p className="text-xl font-black text-[#1b3d1a]">₦15,000</p>
             </div>
           </div>
         </div>
@@ -90,14 +67,7 @@ export default function TransportOption() {
         </div>
       </main>
 
-      {/* Floating Bottom Nav */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-gray-100 px-8 py-4 rounded-full shadow-2xl flex items-center gap-12 z-50">
-          <span className="text-xl text-gray-300">🏠</span>
-          <span className="text-xl text-gray-300">🔍</span>
-          <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-green-200">+</div>
-          <span className="text-xl text-gray-300">📄</span>
-          <span className="text-xl text-gray-300">👤</span>
-      </div>
+      <BottomNav activeItem="bookings" />
     </div>
   );
 }

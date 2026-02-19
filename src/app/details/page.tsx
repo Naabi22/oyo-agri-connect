@@ -5,7 +5,7 @@ export default function EquipmentDetails() {
   return (
     <div className="min-h-screen bg-[#F8F9F8] pb-20">
       <Header />
-      
+
       <main className="max-w-7xl mx-auto px-6 pt-28">
         {/* Breadcrumbs */}
         <nav className="text-xs text-gray-400 mb-6 flex gap-2">
@@ -13,14 +13,13 @@ export default function EquipmentDetails() {
         </nav>
 
         <div className="flex flex-col lg:flex-row gap-8">
-          
+
           {/* LEFT COLUMN: Media & Info */}
           <div className="lg:w-[65%] space-y-8">
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-4 gap-4 h-[500px]">
               <div className="col-span-3 bg-gray-200 rounded-[32px] overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-center text-[120px]">🚜</div>
-                {/* Replace with <img src="/tractor-main.jpg" className="w-full h-full object-cover" /> */}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="h-1/3 bg-gray-200 rounded-2xl flex items-center justify-center text-3xl">⚙️</div>
@@ -56,18 +55,18 @@ export default function EquipmentDetails() {
 
             {/* Features Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-               {[
-                 { label: "Horsepower", val: "50 HP", icon: "📟" },
-                 { label: "Fuel Type", val: "Diesel", icon: "⛽" },
-                 { label: "Year", val: "2022", icon: "📅" },
-                 { label: "Usage", val: "450 hrs", icon: "🕒" }
-               ].map((item, i) => (
-                 <div key={i} className="bg-white p-6 rounded-3xl border border-gray-100 text-center">
-                   <div className="text-2xl mb-2">{item.icon}</div>
-                   <p className="text-[10px] text-gray-400 uppercase font-bold">{item.label}</p>
-                   <p className="font-bold text-[#1b3d1a]">{item.val}</p>
-                 </div>
-               ))}
+              {[
+                { label: "Horsepower", val: "50 HP", icon: "📟" },
+                { label: "Fuel Type", val: "Diesel", icon: "⛽" },
+                { label: "Year", val: "2022", icon: "📅" },
+                { label: "Usage", val: "450 hrs", icon: "🕒" }
+              ].map((item, i) => (
+                <div key={i} className="bg-white p-6 rounded-3xl border border-gray-100 text-center">
+                  <div className="text-2xl mb-2">{item.icon}</div>
+                  <p className="text-[10px] text-gray-400 uppercase font-bold">{item.label}</p>
+                  <p className="font-bold text-[#1b3d1a]">{item.val}</p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -90,7 +89,7 @@ export default function EquipmentDetails() {
                     <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
                   </div>
                   <div className="grid grid-cols-7 gap-2 text-center font-bold text-xs">
-                    {Array.from({length: 14}).map((_, i) => (
+                    {Array.from({ length: 14 }).map((_, i) => (
                       <div key={i} className={`py-2 rounded-lg ${i === 5 || i === 6 ? 'bg-[#4CAF50] text-white' : 'text-gray-600'}`}>
                         {i + 10}
                       </div>
@@ -120,7 +119,7 @@ export default function EquipmentDetails() {
                   Book Now →
                 </button>
               </Link>
-              
+
               <p className="text-center text-[10px] text-gray-400 mt-4 font-medium">
                 You won't be charged yet. The owner has 24 hours to confirm your request.
               </p>
