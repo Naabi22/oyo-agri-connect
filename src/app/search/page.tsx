@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Header from "../../components/Header";
 import BottomNav from "../../components/BottomNav";
 import { equipment } from "../../lib/mockData";
@@ -107,13 +108,14 @@ export default function SearchPage() {
                         <span className="text-gray-400 font-black text-sm">/ day</span>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => showToast("Rental request sent successfully!", "success")}
-                        className="w-full bg-primary text-white py-5 rounded-2xl font-black shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all"
-                      >
-                        Rent Now
-                      </button>
+                    <div className="flex gap-2 w-full">
+                      <Link href="/details" className="w-full">
+                        <button
+                          className="w-full bg-primary text-white py-5 rounded-2xl font-black shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all text-center"
+                        >
+                          Rent Now
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

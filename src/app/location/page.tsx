@@ -6,10 +6,10 @@ import StepIndicator from '../../components/StepIndicator';
 export default function BookingLocation() {
   return (
     <div className="min-h-screen bg-white">
-      <Header backHref="/duration" title="Usage Location" showLocation />
+      <Header backHref="/details" title="Usage Location" showLocation />
 
       <main className="max-w-4xl mx-auto pt-24 px-6">
-        <StepIndicator currentStep={2} totalSteps={4} statusLabel="50% Complete" />
+        <StepIndicator currentStep={1} totalSteps={3} statusLabel="Location & Details" />
 
         {/* Search Card */}
         <div className="bg-white rounded-[32px] p-8 shadow-sm border border-gray-50 mb-6">

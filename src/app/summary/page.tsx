@@ -20,7 +20,7 @@ export default function OrderSummary() {
       <Header backHref="/transport" title="Confirm Booking" showLocationSelector />
 
       <main className="max-w-4xl mx-auto pt-24 px-6">
-        <StepIndicator currentStep={4} totalSteps={4} statusLabel="Review & Confirm" />
+        <StepIndicator currentStep={3} totalSteps={3} statusLabel="Review & Confirm" />
 
         {/* Cost Summary Card */}
         <div className="bg-white rounded-[48px] shadow-2xl shadow-primary/5 border border-white overflow-hidden mb-12">

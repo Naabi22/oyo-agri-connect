@@ -9,7 +9,7 @@ export default function TransportOption() {
       <Header backHref="/location" title="Transport" showLocation />
 
       <main className="max-w-5xl mx-auto pt-24 px-6">
-        <StepIndicator currentStep={3} totalSteps={4} statusLabel="75% Complete" />
+        <StepIndicator currentStep={2} totalSteps={3} statusLabel="Transport Method" />
 
         <div className="mb-12">
           <h1 className="text-3xl font-black text-primary-dark mb-2">How will you get your equipment?</h1>
