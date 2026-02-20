@@ -1,7 +1,10 @@
 import Header from '../../components/Header';
 import Link from 'next/link';
+import { Star, Link as LinkIcon, Heart, Cpu, Fuel, Calendar, Clock, ChevronRight } from 'lucide-react';
+import { useToast } from '@/components/Toast';
 
 export default function EquipmentDetails() {
+  const { showToast } = useToast();
   return (
     <div className="min-h-screen bg-[#F8F9F8] pb-20">
       <Header />
@@ -9,7 +12,7 @@ export default function EquipmentDetails() {
       <main className="max-w-7xl mx-auto px-6 pt-28">
         {/* Breadcrumbs */}
         <nav className="text-xs text-gray-400 mb-6 flex gap-2">
-          <span>Home</span> &gt; <span>Tractors</span> &gt; <span className="text-[#1b3d1a] font-bold">John Deere 5050D</span>
+          <span>Home</span> &gt; <span>Tractors</span> &gt; <span className="text-primary font-bold">John Deere 5050D</span>
         </nav>
 
         <div className="flex flex-col lg:flex-row gap-8">
@@ -18,8 +21,13 @@ export default function EquipmentDetails() {
           <div className="lg:w-[65%] space-y-8">
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-4 gap-4 h-[500px]">
-              <div className="col-span-3 bg-gray-200 rounded-[32px] overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center text-[120px]">🚜</div>
+              <div className="col-span-3 bg-neutral-soft rounded-[32px] overflow-hidden relative group">
+                <img
+                  src="https://images.unsplash.com/photo-1594913785162-e678563c4583?auto=format&fit=crop&q=80&w=1200"
+                  alt="John Deere 5050D"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors" />
               </div>
               <div className="flex flex-col gap-4">
                 <div className="h-1/3 bg-gray-200 rounded-2xl flex items-center justify-center text-3xl">⚙️</div>
@@ -29,18 +37,21 @@ export default function EquipmentDetails() {
             </div>
 
             {/* Title & Owner Info */}
-            <div className="bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm">
+            <div className="bg-white p-8 rounded-[32px] border border-neutral-soft/50 shadow-sm">
               <div className="flex justify-between items-start">
                 <div>
-                  <h1 className="text-3xl font-black text-[#1b3d1a]">John Deere 5050D Tractor</h1>
+                  <h1 className="text-3xl font-black text-primary-dark">John Deere 5050D Tractor</h1>
                   <div className="flex items-center gap-4 mt-2">
-                    <span className="text-[#FFB800] font-bold">★ 4.8 <span className="text-gray-300 font-normal">(124 reviews)</span></span>
-                    <span className="bg-[#E8F5E9] text-[#4CAF50] text-[10px] font-black px-3 py-1 rounded-full uppercase">Verified Owner</span>
+                    <span className="text-secondary font-bold flex items-center gap-1">
+                      <Star size={16} fill="currentColor" /> 4.8
+                      <span className="text-gray-300 font-normal">(124 reviews)</span>
+                    </span>
+                    <span className="bg-primary/10 text-primary text-[10px] font-black px-3 py-1 rounded-full uppercase">Verified Owner</span>
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <button className="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center hover:bg-gray-50">🔗</button>
-                  <button className="w-10 h-10 border border-gray-100 rounded-full flex items-center justify-center hover:bg-gray-50">❤️</button>
+                  <button className="w-10 h-10 border border-neutral-soft rounded-2xl flex items-center justify-center hover:bg-neutral transition-all"><LinkIcon size={18} className="text-gray-400" /></button>
+                  <button className="w-10 h-10 border border-neutral-soft rounded-2xl flex items-center justify-center hover:bg-neutral transition-all"><Heart size={18} className="text-gray-400" /></button>
                 </div>
               </div>
 
@@ -56,15 +67,17 @@ export default function EquipmentDetails() {
             {/* Features Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { label: "Horsepower", val: "50 HP", icon: "📟" },
-                { label: "Fuel Type", val: "Diesel", icon: "⛽" },
-                { label: "Year", val: "2022", icon: "📅" },
-                { label: "Usage", val: "450 hrs", icon: "🕒" }
+                { label: "Horsepower", val: "50 HP", Icon: Cpu },
+                { label: "Fuel Type", val: "Diesel", Icon: Fuel },
+                { label: "Year", val: "2022", Icon: Calendar },
+                { label: "Usage", val: "450 hrs", Icon: Clock }
               ].map((item, i) => (
-                <div key={i} className="bg-white p-6 rounded-3xl border border-gray-100 text-center">
-                  <div className="text-2xl mb-2">{item.icon}</div>
-                  <p className="text-[10px] text-gray-400 uppercase font-bold">{item.label}</p>
-                  <p className="font-bold text-[#1b3d1a]">{item.val}</p>
+                <div key={i} className="bg-white p-6 rounded-3xl border border-neutral-soft/50 text-center group hover:border-primary/20 transition-all">
+                  <div className="w-10 h-10 bg-neutral-soft/50 rounded-xl flex items-center justify-center mx-auto mb-3 text-primary group-hover:scale-110 transition-transform">
+                    <item.Icon size={20} />
+                  </div>
+                  <p className="text-[10px] text-gray-400 uppercase font-black tracking-widest">{item.label}</p>
+                  <p className="font-black text-primary-dark">{item.val}</p>
                 </div>
               ))}
             </div>
@@ -75,22 +88,22 @@ export default function EquipmentDetails() {
             <div className="bg-white p-8 rounded-[40px] border border-gray-100 shadow-xl sticky top-28">
               <div className="flex justify-between items-end mb-8">
                 <div>
-                  <span className="text-3xl font-black text-[#1b3d1a]">₦25,000</span>
+                  <span className="text-3xl font-black text-primary-dark tracking-tight">₦25,000</span>
                   <span className="text-gray-400 font-bold text-sm"> / day</span>
                 </div>
-                <span className="text-[#4CAF50] text-xs font-bold underline">Insurance Included</span>
+                <span className="text-accent text-xs font-black uppercase tracking-widest underline decoration-accent/30 underline-offset-4">Insurance Included</span>
               </div>
 
               {/* Simplified Calendar Placeholder */}
               <div className="mb-8">
-                <p className="text-xs font-bold text-[#1b3d1a] mb-4 uppercase tracking-widest">Select Dates</p>
-                <div className="bg-[#F8F9F8] rounded-2xl p-4 border border-gray-100">
-                  <div className="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-gray-400 mb-2">
+                <p className="text-[10px] font-black text-primary-dark mb-4 uppercase tracking-[0.2em]">Select Dates</p>
+                <div className="bg-neutral-soft/30 rounded-3xl p-6 border border-neutral-soft/50">
+                  <div className="grid grid-cols-7 gap-2 text-center text-[10px] font-black text-gray-300 mb-4 tracking-widest">
                     <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
                   </div>
-                  <div className="grid grid-cols-7 gap-2 text-center font-bold text-xs">
+                  <div className="grid grid-cols-7 gap-2 text-center font-black text-xs">
                     {Array.from({ length: 14 }).map((_, i) => (
-                      <div key={i} className={`py-2 rounded-lg ${i === 5 || i === 6 ? 'bg-[#4CAF50] text-white' : 'text-gray-600'}`}>
+                      <div key={i} className={`py-3 rounded-xl transition-all cursor-pointer ${i === 5 || i === 6 ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-110' : 'text-gray-400 hover:bg-neutral-soft'}`}>
                         {i + 10}
                       </div>
                     ))}
@@ -99,26 +112,28 @@ export default function EquipmentDetails() {
               </div>
 
               {/* Price Breakdown */}
-              <div className="space-y-3 mb-8 text-sm border-t border-gray-50 pt-6">
-                <div className="flex justify-between text-gray-500">
+              <div className="space-y-4 mb-10 text-sm border-t border-neutral-soft pt-8">
+                <div className="flex justify-between text-gray-400 font-bold">
                   <span>₦25,000 x 4 days</span>
-                  <span className="font-bold text-[#1b3d1a]">₦100,000</span>
+                  <span className="font-black text-primary-dark">₦100,000</span>
                 </div>
-                <div className="flex justify-between text-gray-500">
+                <div className="flex justify-between text-gray-400 font-bold">
                   <span>Service Fee</span>
-                  <span className="font-bold text-[#1b3d1a]">₦2,500</span>
+                  <span className="font-black text-primary-dark">₦2,500</span>
                 </div>
-                <div className="flex justify-between pt-4 border-t border-gray-100">
-                  <span className="font-black text-[#1b3d1a]">Total</span>
-                  <span className="font-black text-[#4CAF50] text-xl">₦102,500</span>
+                <div className="flex justify-between pt-6 border-t border-neutral-soft">
+                  <span className="font-black text-primary-dark text-lg">Total</span>
+                  <span className="font-black text-primary text-2xl tracking-tight">₦102,500</span>
                 </div>
               </div>
 
-              <Link href="/duration">
-                <button className="w-full bg-[#4CAF50] text-white py-5 rounded-2xl font-black text-lg shadow-lg shadow-green-100 hover:scale-[1.02] transition-transform">
-                  Book Now →
-                </button>
-              </Link>
+              <button
+                onClick={() => showToast("Booking request initiated successfully!", "success")}
+                className="w-full bg-primary text-white py-6 rounded-[24px] font-black text-xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+              >
+                Book Now
+                <ChevronRight size={24} />
+              </button>
 
               <p className="text-center text-[10px] text-gray-400 mt-4 font-medium">
                 You won&apos;t be charged yet. The owner has 24 hours to confirm your request.

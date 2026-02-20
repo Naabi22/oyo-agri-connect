@@ -2,52 +2,54 @@ import Header from '../../components/Header';
 import Link from 'next/link';
 import BottomNav from '../../components/BottomNav';
 import StepIndicator from '../../components/StepIndicator';
+import { useToast } from '@/components/Toast';
 
 export default function OrderSummary() {
+  const { showToast } = useToast();
   return (
-    <div className="min-h-screen bg-[#F8F9F8]">
-      <Header backHref="/transport" title="Confirm Booking" showLocation />
+    <div className="min-h-screen bg-neutral">
+      <Header backHref="/transport" title="Confirm Booking" showLocationSelector />
 
       <main className="max-w-4xl mx-auto pt-24 px-6">
         <StepIndicator currentStep={4} totalSteps={4} statusLabel="Review & Confirm" />
 
         {/* Cost Summary Card */}
-        <div className="bg-white rounded-[40px] shadow-sm border border-gray-50 overflow-hidden mb-12">
-          <div className="p-10">
-            <h2 className="text-2xl font-black text-[#1b3d1a] mb-10">Cost Summary</h2>
+        <div className="bg-white rounded-[48px] shadow-2xl shadow-primary/5 border border-white overflow-hidden mb-12">
+          <div className="p-10 md:p-14">
+            <h2 className="text-3xl font-black text-primary-dark mb-10">Cost Summary</h2>
 
             {/* Pricing Details */}
             <div className="space-y-6 mb-12">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="font-black text-[#1b3d1a] text-lg">Rental</p>
-                  <p className="text-xs text-gray-400 italic">3 days x ₦15,000</p>
+                  <p className="font-black text-primary-dark text-lg">Rental</p>
+                  <p className="text-xs text-gray-400 font-bold">3 days x ₦15,000</p>
                 </div>
-                <p className="font-black text-[#1b3d1a] text-lg">₦45,000</p>
+                <p className="font-black text-primary-dark text-xl">₦45,000</p>
               </div>
 
               <div className="flex justify-between items-center">
-                <p className="font-black text-gray-400 text-lg">Delivery Fee</p>
-                <p className="font-black text-[#1b3d1a] text-lg">₦2,000</p>
+                <p className="font-bold text-gray-400 text-lg">Delivery Fee</p>
+                <p className="font-black text-primary-dark text-xl">₦2,000</p>
               </div>
 
-              <div className="flex justify-between items-center pb-8 border-b border-gray-50">
-                <p className="font-black text-gray-400 text-lg">Service Fee</p>
-                <p className="font-black text-[#1b3d1a] text-lg">₦500</p>
+              <div className="flex justify-between items-center pb-8 border-b border-neutral-soft">
+                <p className="font-bold text-gray-400 text-lg">Service Fee</p>
+                <p className="font-black text-primary-dark text-xl">₦500</p>
               </div>
 
-              <div className="flex justify-between items-center pt-4">
-                <p className="text-2xl font-black text-[#1b3d1a]">Total</p>
-                <p className="text-4xl font-black text-[#4CAF50]">₦47,500</p>
+              <div className="flex justify-between items-center pt-8">
+                <p className="text-3xl font-black text-primary-dark">Total</p>
+                <p className="text-5xl font-black text-primary tracking-tight">₦47,500</p>
               </div>
             </div>
 
             {/* Information Alert */}
-            <div className="bg-[#F1F9F1] rounded-3xl p-6 flex gap-4">
-              <div className="w-6 h-6 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-xs shrink-0 font-bold">i</div>
+            <div className="bg-neutral-soft/30 rounded-3xl p-8 flex gap-5 border border-neutral-soft/50 font-bold">
+              <div className="w-8 h-8 bg-primary rounded-xl flex items-center justify-center text-white text-sm shrink-0 font-black shadow-lg shadow-primary/20">i</div>
               <div>
-                <p className="font-black text-[#1b3d1a] text-sm mb-1">You won&apos;t be charged yet</p>
-                <p className="text-[11px] text-gray-500 leading-relaxed">
+                <p className="font-black text-primary-dark text-base mb-1">You won&apos;t be charged yet</p>
+                <p className="text-xs text-gray-400 leading-relaxed">
                   The owner needs to accept your request before any payment is processed.
                   You can still cancel without penalty within 2 hours.
                 </p>
@@ -63,11 +65,12 @@ export default function OrderSummary() {
 
         {/* Action Button */}
         <div className="flex justify-center mb-24">
-          <Link href="/dashboard" className="w-full max-w-lg">
-            <button className="w-full bg-[#4CAF50] text-white py-6 rounded-full font-black text-xl shadow-xl shadow-green-200 hover:scale-[1.02] active:scale-95 transition-all">
-              Confirm & Request ➔
-            </button>
-          </Link>
+          <button
+            onClick={() => showToast("Request sent to Marcus Omandi! Check your dashboard for updates.", "success")}
+            className="w-full max-w-lg bg-primary text-white py-6 rounded-[32px] font-black text-2xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+          >
+            Confirm & Request ➔
+          </button>
         </div>
       </main>
 

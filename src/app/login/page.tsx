@@ -1,20 +1,26 @@
-"use client";
-
+import Link from "next/link";
 import { Tractor, Phone, Mail, HelpCircle, Globe } from "lucide-react";
+import { useToast } from "@/components/Toast";
 
 export default function LoginPage() {
+    const { showToast } = useToast();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        showToast("Success! Check your messages for the login code.", "success");
+    };
     return (
         <div className="min-h-screen bg-white relative flex flex-col items-center justify-center p-6 bg-grid-pattern overflow-hidden">
             {/* Spotlight Effect */}
             <div className="absolute inset-0 bg-spotlight pointer-events-none" />
 
             {/* Background Dots Pattern (Custom) */}
-            <div className="absolute inset-0 opacity-[0.15] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#00E31A 1.5px, transparent 1.5px)', backgroundSize: '24px 24px' }} />
+            <div className="absolute inset-0 opacity-[0.1] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(var(--primary) 1.5px, transparent 1.5px)', backgroundSize: '32px 32px' }} />
 
             {/* Top Logo */}
             <div className="flex flex-col items-center mb-12 relative z-10">
-                <div className="w-16 h-16 bg-[#00E31A] rounded-2xl flex items-center justify-center text-white shadow-xl shadow-green-200 mb-4 animate-bounce-slow">
+                <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-xl shadow-primary/20 mb-4 animate-bounce-slow">
                     <Tractor size={36} strokeWidth={2.5} />
                 </div>
                 <h1 className="text-3xl font-black text-[#1b3d1a] tracking-tight">
@@ -34,7 +40,7 @@ export default function LoginPage() {
                     </p>
                 </div>
 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                     <div className="space-y-2">
                         <label className="text-[12px] font-black text-primary-dark uppercase tracking-widest ml-1">
                             Phone Number

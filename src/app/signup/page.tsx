@@ -1,9 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import { User, Phone, MapPin, Mail, ChevronRight, Leaf, ShieldCheck, Tractor } from "lucide-react";
+import { useToast } from "@/components/Toast";
 
 export default function SignupPage() {
+    const { showToast } = useToast();
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        showToast("Welcome! Check your phone for a verification code.", "success");
+    };
     return (
         <div className="min-h-screen bg-[#F8FAF8] relative flex flex-col items-center justify-center p-6 overflow-hidden">
             {/* Soft Gradient Background with illustrations */}
@@ -21,7 +26,7 @@ export default function SignupPage() {
 
             {/* Top Logo - Leaf Icon style from design */}
             <div className="mb-10 text-center relative z-10 transition-all hover:scale-110">
-                <div className="w-16 h-16 bg-[#00E31A] rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-green-200 mb-6 mx-auto transform rotate-12">
+                <div className="w-16 h-16 bg-primary rounded-[24px] flex items-center justify-center text-white shadow-xl shadow-primary/20 mb-6 mx-auto transform rotate-12">
                     <Leaf size={32} fill="white" />
                 </div>
                 <h1 className="text-4xl font-black text-primary-dark tracking-tight mb-2">
@@ -34,7 +39,7 @@ export default function SignupPage() {
 
             {/* Signup Card */}
             <div className="w-full max-w-lg bg-white rounded-[56px] p-12 shadow-2xl shadow-green-900/5 border border-white relative z-10">
-                <form className="space-y-8">
+                <form className="space-y-8" onSubmit={handleSubmit}>
                     {/* Full Name */}
                     <div className="space-y-3">
                         <label className="text-[12px] font-black text-primary-dark uppercase tracking-widest ml-1">

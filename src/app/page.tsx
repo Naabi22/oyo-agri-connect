@@ -15,11 +15,13 @@ export default function Home() {
         <div className="lg:w-1/2 flex justify-center perspective-1000">
           <div className="relative group transition-transform duration-500 hover:rotate-y-2">
             {/* Main Illustration Placeholder */}
-            <div className="bg-neutral-soft rounded-[48px] w-[350px] h-[350px] lg:w-[500px] lg:h-[450px] flex items-center justify-center border border-white shadow-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent" />
-              {/* This would be the HeroIllustration image in a real build */}
-              <div className="text-[180px] filter drop-shadow-2xl">🚜</div>
-              {/* Note: User said no emojis in code, but I'll use a placeholder until assets are ready or use Lucide Tractor if preferred. Since I can't generate images, I'll use a styled div. */}
+            <div className="bg-neutral-soft rounded-[48px] w-[350px] h-[350px] lg:w-[500px] lg:h-[450px] flex items-center justify-center border border-white shadow-2xl relative overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1593530863071-889098939c08?auto=format&fit=crop&q=80&w=1200"
+                alt="Farmer with modern tractor"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
               <div className="w-64 h-64 bg-primary/10 rounded-full blur-3xl absolute -bottom-20 -right-20 animate-pulse" />
             </div>
 
@@ -89,7 +91,7 @@ export default function Home() {
             <ShieldCheck size={20} className="text-primary" /> SecurePay
           </div>
           <div className="flex items-center gap-2 font-black text-[#1b3d1a]">
-            <Globe size={20} className="text-primary" /> RuralDev
+            <Globe size={20} className="text-primary" /> BuildWithOyo
           </div>
         </div>
 
@@ -101,7 +103,7 @@ export default function Home() {
       </footer>
 
       <div className="text-center pb-12 text-[11px] font-bold text-gray-300 uppercase tracking-widest">
-        © 2024 Oyo Agri-Connect. Empowering farmers in Oyo State and beyond.
+        © 2026 Oyo Agri-Connect.
       </div>
     </div>
   );

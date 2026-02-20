@@ -1,12 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import Header from "../../components/Header";
 import BottomNav from "../../components/BottomNav";
 import { equipment } from "../../lib/mockData";
 import { Search, Plus, Truck, Star, Heart, MoveRight, Tractor, Hammer, User } from "lucide-react";
+import { useToast } from "@/components/Toast";
 
 export default function Dashboard() {
+  const { showToast } = useToast();
   const nearbyEquipment = equipment.filter(item => item.dist).slice(0, 3);
 
   return (
@@ -28,7 +28,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
           {/* Find Equipment Card */}
           <Link href="/search" className="block group">
-            <div className="bg-[#4CAF50] p-10 rounded-[40px] text-white relative overflow-hidden shadow-2xl shadow-green-200 transition-all hover:scale-[1.02] hover:shadow-green-300">
+            <div className="bg-primary p-10 rounded-[40px] text-white relative overflow-hidden shadow-2xl shadow-primary/20 transition-all hover:scale-[1.02] hover:shadow-primary/30">
               <div className="relative z-10">
                 <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-10 backdrop-blur-md border border-white/10">
                   <Search size={28} strokeWidth={3} />
@@ -46,9 +46,12 @@ export default function Dashboard() {
           </Link>
 
           {/* List Equipment Card */}
-          <div className="bg-[#FFF4E0] p-10 rounded-[40px] text-[#866100] relative overflow-hidden border border-[#FFE0A3] transition-all hover:scale-[1.02] cursor-pointer group shadow-xl shadow-yellow-900/5">
+          <div
+            onClick={() => showToast("Listing feature coming soon to your community!", "info")}
+            className="bg-neutral-soft/50 p-10 rounded-[40px] text-primary-dark relative overflow-hidden border border-neutral-soft transition-all hover:scale-[1.02] cursor-pointer group shadow-xl shadow-primary/5"
+          >
             <div className="relative z-10">
-              <div className="w-14 h-14 bg-[#FFB800] rounded-2xl flex items-center justify-center text-white mb-10 shadow-lg shadow-yellow-200">
+              <div className="w-14 h-14 bg-secondary rounded-2xl flex items-center justify-center text-primary-dark mb-10 shadow-lg shadow-secondary/20">
                 <Plus size={28} strokeWidth={3} />
               </div>
               <h3 className="text-3xl font-black mb-2">List Equipment</h3>
@@ -72,7 +75,7 @@ export default function Dashboard() {
             </div>
             <div>
               <div className="flex items-center gap-3 mb-1">
-                <span className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse shadow-[0_0_8px_rgba(0,227,26,1)]" />
+                <span className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse shadow-[0_0_12px_rgba(29,77,26,0.5)]" />
                 <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em]">
                   Current Rental
                 </p>
@@ -86,7 +89,10 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <button className="mt-6 md:mt-0 bg-primary-dark text-white px-10 py-5 rounded-3xl font-black text-lg shadow-xl hover:bg-black transition-all">
+          <button
+            onClick={() => showToast("Driver is 2km away from your village.", "info")}
+            className="mt-6 md:mt-0 bg-primary-dark text-white px-10 py-5 rounded-3xl font-black text-lg shadow-xl hover:bg-black transition-all"
+          >
             Track Arrival
           </button>
         </div>
@@ -109,7 +115,12 @@ export default function Dashboard() {
               className="bg-white rounded-[40px] overflow-hidden border border-neutral-soft shadow-sm group hover:shadow-2xl hover:shadow-green-900/5 transition-all duration-500"
             >
               <div className="h-56 bg-neutral-soft relative flex items-center justify-center overflow-hidden">
-                <div className="text-[100px] transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6 opacity-80">{item.image}</div>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md text-primary text-[11px] font-black px-4 py-2 rounded-2xl uppercase tracking-widest shadow-sm">
                   Available
                 </div>

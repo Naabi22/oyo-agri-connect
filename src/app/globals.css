@@ -1,43 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  /* Vibrant Oyo Agri-Connect Palette */
-  --primary: #00E31A;
-  --primary-dark: #1b3d1a;
-  --secondary: #000000;
-  --neutral: #F8FAF8;
-  --neutral-soft: #F1F3F1;
-  
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-primary: var(--primary);
-  --color-primary-dark: var(--primary-dark);
-  --color-secondary: var(--secondary);
-  --color-neutral: var(--neutral);
-  --color-neutral-soft: var(--neutral-soft);
-  
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
-  overflow-x: hidden;
+:root {
+  --primary: #1D4D1A;
+  --primary-dark: #0D260D;
+  --secondary: #E9B824;
+  --accent: #4CAF50;
+  --neutral: #F5F7F5;
+  --neutral-soft: #E0E4E0;
+  --bg-white: #FFFFFF;
 }
 
-/* Design Pattern: Grid Background */
-.bg-grid-pattern {
-  background-size: 80px 80px;
-  background-image: 
-    linear-gradient(to right, #eff2ef 1px, transparent 1px),
-    linear-gradient(to bottom, #eff2ef 1px, transparent 1px);
+@layer base {
+  *, ::after, ::before {
+    @apply border-neutral-soft/50;
+  }
+  body {
+    @apply bg-white text-primary-dark;
+  }
 }
 
-.bg-spotlight {
-  background: radial-gradient(circle at center, rgba(0, 227, 26, 0.05) 0%, transparent 70%);
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: radial-gradient(circle at 1px 1px, #E0E4E0 1px, transparent 0);
+    background-size: 40px 40px;
+  }
+  
+  .bg-spotlight {
+    background: radial-gradient(circle 800px at 50% -20%, #1D4D1A08, transparent);
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .rotate-y-2 {
+    transform: rotateY(2deg);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

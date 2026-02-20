@@ -6,8 +6,10 @@ import Header from "../../components/Header";
 import BottomNav from "../../components/BottomNav";
 import { equipment } from "../../lib/mockData";
 import { Search as SearchIcon, MapPin, Star, Navigation } from "lucide-react";
+import { useToast } from "@/components/Toast";
 
 export default function SearchPage() {
+  const { showToast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
@@ -67,10 +69,12 @@ export default function SearchPage() {
                 className="bg-white rounded-[40px] overflow-hidden border border-neutral-soft/50 shadow-sm hover:shadow-2xl hover:shadow-green-900/5 transition-all duration-500 group"
               >
                 <div className="h-64 bg-neutral-soft relative overflow-hidden flex items-center justify-center">
-                  {/* Equipment Image Placeholder */}
-                  <div className="text-[120px] transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3 opacity-90 grayscale-[0.2] group-hover:grayscale-0">
-                    {item.image}
-                  </div>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors" />
                   <div className="absolute top-6 left-6 bg-primary text-white text-[10px] font-black px-4 py-2 rounded-2xl uppercase tracking-widest shadow-lg">
                     Available
                   </div>
@@ -104,11 +108,14 @@ export default function SearchPage() {
                         <span className="text-gray-400 font-black text-sm">/ day</span>
                       </div>
                     </div>
-                    <Link href="/details">
-                      <button className="bg-primary text-white px-8 py-4 rounded-2xl font-black text-sm shadow-xl shadow-green-100 hover:scale-[1.05] active:scale-95 transition-all">
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => showToast("Request sent! The owner will confirm shortly.", "success")}
+                        className="bg-primary text-white px-8 py-4 rounded-2xl font-black text-sm shadow-xl shadow-primary/10 hover:scale-[1.05] active:scale-95 transition-all w-full"
+                      >
                         Rent Now
                       </button>
-                    </Link>
+                    </div>
                   </div>
                 </div>
               </div>
