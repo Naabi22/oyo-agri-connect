@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '../../components/Header';
 import BottomNav from '../../components/BottomNav';
 import StepIndicator from '../../components/StepIndicator';

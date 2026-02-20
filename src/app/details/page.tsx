@@ -1,3 +1,5 @@
+"use client";
+
 import Header from '../../components/Header';
 import Link from 'next/link';
 import { Star, Link as LinkIcon, Heart, Cpu, Fuel, Calendar, Clock, ChevronRight } from 'lucide-react';
