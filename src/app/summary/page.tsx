@@ -1,5 +1,4 @@
 import Header from '../../components/Header';
-import Link from 'next/link';
 import BottomNav from '../../components/BottomNav';
 import StepIndicator from '../../components/StepIndicator';
 import { useToast } from '@/components/Toast';

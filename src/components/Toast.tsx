@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, createContext, useContext, ReactNode } from "react";
+import { useState, createContext, useContext, ReactNode } from "react";
 import { CheckCircle, AlertCircle, Info, X } from "lucide-react";
 
 type ToastType = "success" | "error" | "info";
@@ -17,11 +17,17 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
+let toastCount = 0;
+const generateToastId = () => {
+    toastCount += 1;
+    return `toast-${Date.now()}-${toastCount}`;
+};
+
 export function ToastProvider({ children }: { children: ReactNode }) {
     const [toasts, setToasts] = useState<Toast[]>([]);
 
     const showToast = (message: string, type: ToastType = "success") => {
-        const id = Math.random().toString(36).substr(2, 9);
+        const id = generateToastId();
         setToasts((prev) => [...prev, { id, message, type }]);
         setTimeout(() => removeToast(id), 5000);
     };
@@ -38,10 +44,10 @@ export function ToastProvider({ children }: { children: ReactNode }) {
                     <div
                         key={toast.id}
                         className={`flex items-center gap-4 p-4 rounded-2xl shadow-2xl border backdrop-blur-md animate-in slide-in-from-right fade-in duration-300 ${toast.type === "success"
-                                ? "bg-[#1D4D1A]/90 border-[#1D4D1A] text-white"
-                                : toast.type === "error"
-                                    ? "bg-red-500/90 border-red-600 text-white"
-                                    : "bg-blue-500/90 border-blue-600 text-white"
+                            ? "bg-[#1D4D1A]/90 border-[#1D4D1A] text-white"
+                            : toast.type === "error"
+                                ? "bg-red-500/90 border-red-600 text-white"
+                                : "bg-blue-500/90 border-blue-600 text-white"
                             }`}
                     >
                         <div className="shrink-0">

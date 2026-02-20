@@ -3,16 +3,14 @@
 @theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-:root {
-  --primary: #1D4D1A;
-  --primary-dark: #0D260D;
-  --secondary: #E9B824;
-  --accent: #4CAF50;
-  --neutral: #F5F7F5;
-  --neutral-soft: #E0E4E0;
-  --bg-white: #FFFFFF;
+  --color-primary: #1D4D1A;
+  --color-primary-dark: #0D260D;
+  --color-secondary: #E9B824;
+  --color-accent: #4CAF50;
+  --color-neutral: #F5F7F5;
+  --color-neutral-soft: #E0E4E0;
+  --color-bg-white: #FFFFFF;
 }
 
 @layer base {
