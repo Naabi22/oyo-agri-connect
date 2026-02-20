@@ -22,7 +22,7 @@ export default function BookingDuration() {
             {/* Calendar Header */}
             <div className="flex justify-between items-center mb-10">
               <button className="text-[#4CAF50] text-xl font-bold">‹</button>
-              <h2 className="text-xl font-black text-[#1b3d1a]">October 2024</h2>
+              <h2 className="text-xl font-black text-[#1b3d1a]">October 2026</h2>
               <button className="text-[#4CAF50] text-xl font-bold">›</button>
               <div className="flex gap-4 text-[10px] font-bold uppercase">
                 <span className="flex items-center gap-2"><div className="w-3 h-3 bg-[#4CAF50] rounded-full"></div> Selected</span>
@@ -60,7 +60,7 @@ export default function BookingDuration() {
               </div>
               <div className="text-right">
                 <p className="text-[8px] font-black text-gray-300 uppercase tracking-widest">Period</p>
-                <p className="font-black text-[#1b3d1a]">Oct 15 — Oct 17, 2024</p>
+                <p className="font-black text-[#1b3d1a]">Oct 15 — Oct 17, 2026</p>
               </div>
             </div>
           </div>

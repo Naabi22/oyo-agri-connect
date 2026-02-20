@@ -88,7 +88,7 @@ export default function Home() {
             <Leaf size={20} className="text-primary" /> OyoAgric
           </div>
           <div className="flex items-center gap-2 font-black text-[#1b3d1a]">
-            <ShieldCheck size={20} className="text-primary" /> SecurePay
+            <ShieldCheck size={20} className="text-primary" /> Paystack
           </div>
           <div className="flex items-center gap-2 font-black text-[#1b3d1a]">
             <Globe size={20} className="text-primary" /> BuildWithOyo
