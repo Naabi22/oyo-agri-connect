@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { NavItem } from "../types";
+import { Home, Search, FileText, Briefcase, User } from "lucide-react";
 
 interface BottomNavProps {
     activeItem?: NavItem;
 }
 
 export default function BottomNav({ activeItem }: BottomNavProps) {
-    const items: { id: NavItem; icon: string; label?: string; href: string }[] = [
-        { id: "home", icon: "🏠", label: "HOME", href: "/dashboard" },
-        { id: "search", icon: "🔍", label: "SEARCH", href: "/search" },
-        { id: "bookings", icon: "📄", label: "BOOKINGS", href: "/summary" },
-        { id: "equipment", icon: "🚜", label: "EQUIPMENT", href: "/search" },
-        { id: "profile", icon: "👤", label: "PROFILE", href: "/dashboard" },
+    const items: { id: NavItem; Icon: any; label?: string; href: string }[] = [
+        { id: "home", Icon: Home, label: "HOME", href: "/dashboard" },
+        { id: "search", Icon: Search, label: "SEARCH", href: "/search" },
+        { id: "bookings", Icon: FileText, label: "MY RENTALS", href: "/summary" },
+        { id: "equipment", Icon: Briefcase, label: "MY EQUIPMENT", href: "/search" },
+        { id: "profile", Icon: User, label: "PROFILE", href: "/dashboard" },
     ];
 
     return (
@@ -19,12 +20,12 @@ export default function BottomNav({ activeItem }: BottomNavProps) {
             {items.map((item) => {
                 const isActive = activeItem === item.id;
                 return (
-                    <Link key={item.id} href={item.href} className="flex flex-col items-center gap-1">
-                        <span className={`text-xl ${isActive ? "text-[#4CAF50]" : "text-gray-300"}`}>
-                            {item.icon}
+                    <Link key={item.id} href={item.href} className="flex flex-col items-center gap-1 group">
+                        <span className={`transition-all duration-300 ${isActive ? "text-[#00E31A] scale-110" : "text-gray-300 group-hover:text-gray-400"}`}>
+                            <item.Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
                         </span>
                         {isActive && item.label && (
-                            <span className="text-[10px] font-bold text-[#4CAF50]">{item.label}</span>
+                            <span className="text-[10px] font-black text-[#00E31A] tracking-widest">{item.label}</span>
                         )}
                     </Link>
                 );

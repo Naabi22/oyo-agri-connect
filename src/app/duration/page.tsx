@@ -1,32 +1,17 @@
 import Header from '../../components/Header';
 import Link from 'next/link';
+import BottomNav from '../../components/BottomNav';
+import StepIndicator from '../../components/StepIndicator';
 
 export default function BookingDuration() {
   return (
     <div className="min-h-screen bg-[#F8F9F8]">
-      {/* Top Navigation Bar */}
-      <nav className="flex justify-between items-center px-8 py-4 bg-white border-b border-gray-100">
-        <div className="flex items-center gap-2 text-gray-500 font-bold text-sm">
-          <Link href="/details">← Select Duration</Link>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-[#4CAF50] rounded-full flex items-center justify-center text-white">🚜</div>
-          <span className="font-black text-[#1b3d1a]">Oyo Central</span>
-        </div>
-        <div className="flex gap-2 text-xs font-bold uppercase tracking-widest">
-          <span className="text-[#4CAF50]">EN</span>
-          <span className="text-gray-300">|</span>
-          <span className="text-gray-300">YO</span>
-        </div>
-      </nav>
+      <Header backHref="/details" title="Select Duration" showLocation />
 
-      <main className="max-w-4xl mx-auto pt-12 px-6">
-        {/* Step Indicator */}
+      <main className="max-w-4xl mx-auto pt-24 px-6">
+        <StepIndicator currentStep={1} totalSteps={4} statusLabel="25% Complete" />
+
         <div className="text-center mb-12">
-          <p className="text-[#4CAF50] text-[10px] font-black uppercase tracking-[0.2em] mb-4">Step 1 of 4</p>
-          <div className="w-32 h-1 bg-gray-200 mx-auto rounded-full overflow-hidden">
-            <div className="w-1/4 h-full bg-[#4CAF50]"></div>
-          </div>
           <h1 className="text-3xl font-black text-[#1b3d1a] mt-8">When do you need the equipment?</h1>
           <p className="text-gray-400 text-sm mt-2">Select your rental start and end dates on the calendar below.</p>
         </div>
@@ -91,14 +76,7 @@ export default function BookingDuration() {
         </div>
       </main>
 
-      {/* Floating Bottom Nav (Matching the Design) */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-gray-100 px-8 py-4 rounded-full shadow-2xl flex items-center gap-12 z-50">
-          <span className="text-xl text-gray-300">🏠</span>
-          <span className="text-xl text-gray-300">🔍</span>
-          <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-green-200">+</div>
-          <span className="text-xl text-gray-300 font-bold">📄</span>
-          <span className="text-xl text-gray-300">👤</span>
-      </div>
+      <BottomNav activeItem="bookings" />
     </div>
   );
 }

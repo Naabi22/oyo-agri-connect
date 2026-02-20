@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oyo Agri Connect
+
+**Oyo Agri Connect** is a modern, peer-to-peer agricultural equipment marketplace designed specifically for farmers in Oyo State, Nigeria. It facilitates the renting and listing of essential farming machinery, bridging the gap between equipment owners and those in need of tools to grow their operations.
+
+---
+
+## Key Features
+
+- **Localized Marketplace**: Find tractors, harvesters, irrigation pumps, and more, sorted by proximity to your farm.
+- **Farmer Dashboard**: A central hub to track current rentals, manage listings, and discover nearby equipment.
+- **Visual Booking Flow**: A streamlined, multi-step booking process including duration selection, location pinning, and transport options.
+- **Mobile-First Design**: Optimized for use in the field with a clean, high-contrast UI and intuitive navigation.
+- **Shared Component Architecture**: Optimized for maintainability with reusable UI patterns.
+
+---
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Fonts**: Geist Sans & Geist Mono
+
+---
+
+## Project Architecture
+
+The project follows a modular structure to ensure scalability and ease of maintenance:
+
+- **`src/app/`**: Contains the page routes and layout logic.
+- **`src/components/`**: Houses reusable UI components like `Header`, `BottomNav`, and `StepIndicator`.
+- **`src/lib/`**: Centralized logic and data, including `mockData.ts`.
+- **`src/types/`**: Shared TypeScript interfaces for consistent data handling.
+- **`public/`**: Static assets and icons.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+To get the project running locally, follow these steps:
+
+### 1. Prerequisites
+Ensure you have [Node.js](https://nodejs.org/) installed (v18.x or higher recommended).
+
+### 2. Installation
+Clone the repository and install the dependencies:
+
+```bash
+npm install
+```
+
+### 3. Run Development Server
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Essential Commands
 
-## Learn More
+- `npm run dev`: Starts the development server.
+- `npm run build`: Creates an optimized production build.
+- `npm run start`: Starts the production server.
+- `npm run lint`: Runs ESLint to check for code quality issues.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is currently in active development. Feedback and contributions are welcome to help improve the agricultural ecosystem in Oyo State.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built for the farmers of Oyo State.
