@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { NavItem } from "../types";
-import { Home, Search, FileText, Briefcase, User } from "lucide-react";
+import { Home, Search, FileText, Briefcase, User, LucideIcon } from "lucide-react";
 
 interface BottomNavProps {
     activeItem?: NavItem;
 }
 
 export default function BottomNav({ activeItem }: BottomNavProps) {
-    const items: { id: NavItem; Icon: any; label?: string; href: string }[] = [
+    const items: { id: NavItem; Icon: LucideIcon; label?: string; href: string }[] = [
         { id: "home", Icon: Home, label: "HOME", href: "/dashboard" },
         { id: "search", Icon: Search, label: "SEARCH", href: "/search" },
         { id: "bookings", Icon: FileText, label: "MY RENTALS", href: "/summary" },

@@ -46,7 +46,7 @@ export default function OrderSummary() {
             <div className="bg-[#F1F9F1] rounded-3xl p-6 flex gap-4">
               <div className="w-6 h-6 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-xs shrink-0 font-bold">i</div>
               <div>
-                <p className="font-black text-[#1b3d1a] text-sm mb-1">You won't be charged yet</p>
+                <p className="font-black text-[#1b3d1a] text-sm mb-1">You won&apos;t be charged yet</p>
                 <p className="text-[11px] text-gray-500 leading-relaxed">
                   The owner needs to accept your request before any payment is processed.
                   You can still cancel without penalty within 2 hours.

@@ -23,7 +23,7 @@ export default function TransportOption() {
             <div className="w-12 h-12 bg-[#E8F5E9] rounded-2xl flex items-center justify-center text-xl mb-6">🏪</div>
             <h3 className="text-xl font-black text-[#1b3d1a] mb-3">I will pick it up</h3>
             <p className="text-xs text-gray-400 leading-relaxed mb-6">
-              Collect directly from the owner's location in Ibadan North. Address will be shared after booking confirmation.
+              Collect directly from the owner&apos;s location in Ibadan North. Address will be shared after booking confirmation.
             </p>
             <p className="text-[#4CAF50] font-black text-sm uppercase tracking-wider mt-auto">Free of charge</p>
           </div>

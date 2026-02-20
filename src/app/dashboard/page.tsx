@@ -4,7 +4,7 @@ import Link from "next/link";
 import Header from "../../components/Header";
 import BottomNav from "../../components/BottomNav";
 import { equipment } from "../../lib/mockData";
-import { Search, Plus, Truck, Star, Heart, MoveRight, Tractor, Hammer } from "lucide-react";
+import { Search, Plus, Truck, Star, Heart, MoveRight, Tractor, Hammer, User } from "lucide-react";
 
 export default function Dashboard() {
   const nearbyEquipment = equipment.filter(item => item.dist).slice(0, 3);

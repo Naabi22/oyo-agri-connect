@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Tractor, Phone, Mail, HelpCircle, Globe } from "lucide-react";
 
 export default function LoginPage() {

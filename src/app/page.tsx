@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Header from "../components/Header";
-import { Users, Leaf, ShieldCheck, Globe, MoveRight } from "lucide-react";
+import { Users, Leaf, ShieldCheck, Globe } from "lucide-react";
 
 export default function Home() {
   return (
@@ -54,7 +54,7 @@ export default function Home() {
 
           <p className="text-gray-500 text-xl leading-relaxed max-w-lg font-medium">
             Rent the equipment you need or share yours with fellow farmers
-            across Oyo State. Let's grow together using technology.
+            across Oyo State. Let&apos;s grow together using technology.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">

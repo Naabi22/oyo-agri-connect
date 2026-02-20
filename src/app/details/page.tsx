@@ -121,7 +121,7 @@ export default function EquipmentDetails() {
               </Link>
 
               <p className="text-center text-[10px] text-gray-400 mt-4 font-medium">
-                You won't be charged yet. The owner has 24 hours to confirm your request.
+                You won&apos;t be charged yet. The owner has 24 hours to confirm your request.
               </p>
             </div>
           </div>
