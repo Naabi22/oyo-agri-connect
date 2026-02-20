@@ -115,7 +115,7 @@ export default function EquipmentDetails() {
                 </div>
               </div>
 
-              <Link href="/dashboard">
+              <Link href="/duration">
                 <button className="w-full bg-[#4CAF50] text-white py-5 rounded-2xl font-black text-lg shadow-lg shadow-green-100 hover:scale-[1.02] transition-transform">
                   Book Now →
                 </button>

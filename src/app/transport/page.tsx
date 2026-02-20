@@ -1,0 +1,103 @@
+import Header from '../../components/Header';
+import Link from 'next/link';
+
+export default function TransportOption() {
+  return (
+    <div className="min-h-screen bg-[#F8F9F8]">
+      {/* Top Navigation */}
+      <nav className="flex justify-between items-center px-8 py-4 bg-white border-b border-gray-100">
+        <div className="flex items-center gap-2 text-[#1b3d1a] font-bold text-sm">
+          <Link href="/location" className="flex items-center gap-2">
+            <span className="bg-gray-100 p-1 rounded-md text-xs">🚚</span> Transport
+          </Link>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-xs">🚜</div>
+          <span className="font-black text-[#1b3d1a]">Oyo Central</span>
+        </div>
+        <div className="flex gap-2 text-xs font-bold uppercase tracking-widest">
+          <span className="text-[#4CAF50]">EN</span>
+          <span className="text-gray-300">|</span>
+          <span className="text-gray-300">YO</span>
+        </div>
+      </nav>
+
+      <main className="max-w-5xl mx-auto pt-10 px-6">
+        {/* Step Indicator */}
+        <div className="mb-12">
+          <div className="flex justify-between items-end mb-2">
+            <p className="text-[#4CAF50] text-[10px] font-black uppercase tracking-widest">Step 3 of 4</p>
+            <p className="text-gray-400 text-[10px] font-bold uppercase tracking-widest">75% Complete</p>
+          </div>
+          <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden flex">
+            <div className="w-3/4 h-full bg-[#4CAF50]"></div>
+          </div>
+        </div>
+
+        <div className="mb-12">
+          <h1 className="text-3xl font-black text-[#1b3d1a] mb-2">How will you get your equipment?</h1>
+          <p className="text-gray-400 text-sm">Choose the most convenient way to receive the tractor for your farm operations.</p>
+        </div>
+
+        {/* Transport Options Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* I will pick it up */}
+          <div className="bg-white border-2 border-[#4CAF50] rounded-[32px] p-8 shadow-sm relative transition-all cursor-pointer">
+            <div className="w-12 h-12 bg-[#E8F5E9] rounded-2xl flex items-center justify-center text-xl mb-6">🏪</div>
+            <h3 className="text-xl font-black text-[#1b3d1a] mb-3">I will pick it up</h3>
+            <p className="text-xs text-gray-400 leading-relaxed mb-6">
+              Collect directly from the owner's location in Ibadan North. Address will be shared after booking confirmation.
+            </p>
+            <p className="text-[#4CAF50] font-black text-sm uppercase tracking-wider mt-auto">Free of charge</p>
+          </div>
+
+          {/* Deliver to my location */}
+          <div className="bg-white border border-gray-100 rounded-[32px] p-8 shadow-sm hover:border-gray-200 transition-all cursor-pointer">
+            <div className="w-12 h-12 bg-[#F1F3F1] rounded-2xl flex items-center justify-center text-xl mb-6 text-gray-400">🚚</div>
+            <h3 className="text-xl font-black text-[#1b3d1a] mb-3">Deliver to my location</h3>
+            <p className="text-xs text-gray-400 leading-relaxed mb-6">
+              Professional transport to your specified farm coordinates. Includes loading and unloading assistance.
+            </p>
+            <div className="mt-auto">
+                <p className="text-[8px] font-black text-gray-300 uppercase tracking-widest mb-1">Calculated Fee</p>
+                <p className="text-xl font-black text-[#1b3d1a]">₦15,000</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Delivery Destination Summary Card */}
+        <div className="bg-[#E8F5E9]/50 border border-[#E8F5E9] rounded-[24px] p-6 flex items-center gap-6">
+          <div className="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden relative">
+            <div className="absolute inset-0 bg-[#1b3d1a]/10 flex items-center justify-center text-2xl">📍</div>
+          </div>
+          <div className="flex-1">
+            <p className="text-[10px] font-black text-[#1b3d1a] uppercase tracking-widest mb-1">Delivery Destination</p>
+            <p className="text-xs font-bold text-gray-600 mb-1">Green Valley Farm, Plot 42, Oyo-Ibadan Expressway</p>
+            <button className="text-[10px] font-black text-[#4CAF50] uppercase underline">Edit Delivery Address</button>
+          </div>
+        </div>
+
+        {/* Footer Navigation */}
+        <div className="flex justify-between items-center mt-12 mb-20 border-t border-gray-100 pt-8">
+          <Link href="/location" className="text-gray-400 font-bold text-sm flex items-center gap-2">
+            ← Back
+          </Link>
+          <Link href="/summary">
+            <button className="bg-[#4CAF50] text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-green-100 hover:scale-105 transition-transform">
+              Next: Cost Summary →
+            </button>
+          </Link>
+        </div>
+      </main>
+
+      {/* Floating Bottom Nav */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-lg border border-gray-100 px-8 py-4 rounded-full shadow-2xl flex items-center gap-12 z-50">
+          <span className="text-xl text-gray-300">🏠</span>
+          <span className="text-xl text-gray-300">🔍</span>
+          <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center text-white text-2xl shadow-lg shadow-green-200">+</div>
+          <span className="text-xl text-gray-300">📄</span>
+          <span className="text-xl text-gray-300">👤</span>
+      </div>
+    </div>
+  );
+}
