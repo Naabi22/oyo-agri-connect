@@ -61,7 +61,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row items-center gap-6 pt-6">
             <Link href="/signup" className="w-full sm:w-auto">
-              <button className="w-full bg-primary text-white px-12 py-5 rounded-2xl font-black text-xl shadow-xl shadow-green-200 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+              <button className="w-full bg-primary text-white px-12 py-5 rounded-2xl font-black text-xl shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
                 Get Started
               </button>
             </Link>

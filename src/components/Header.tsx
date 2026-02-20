@@ -29,10 +29,10 @@ export default function Header({
         </Link>
       ) : (
         <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <div className="w-10 h-10 bg-[#00E31A] rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-200 transition-transform group-hover:scale-110">
+          <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
             <Tractor size={24} strokeWidth={2.5} />
           </div>
-          <span className="font-black text-2xl text-[#1b3d1a] tracking-tight hidden md:block">
+          <span className="font-black text-2xl text-primary-dark tracking-tight hidden md:block">
             Oyo Agri-Connect
           </span>
         </Link>
@@ -41,7 +41,7 @@ export default function Header({
       {/* Location Selector */}
       {(showLocationSelector || showLocation) && (
         <div className="bg-neutral-soft/80 backdrop-blur-sm px-5 py-2.5 rounded-full flex items-center gap-3 text-sm font-black text-primary-dark border border-white shadow-sm cursor-pointer hover:bg-neutral transition-all">
-          <span className="text-[#00E31A]">📍</span>
+          <span className="text-primary">📍</span>
           Oyo Central
           <ChevronDown size={16} className="text-gray-400" strokeWidth={3} />
         </div>
@@ -50,11 +50,11 @@ export default function Header({
       {/* Right Actions */}
       <div className="flex items-center gap-6">
         {showLanguageToggle && (
-          <div className="bg-[#E8F5E9] rounded-full p-1.5 flex items-center gap-1 border border-white shadow-sm">
-            <button className="bg-[#00E31A] text-white px-4 py-2 rounded-full text-xs font-black shadow-sm transition-all whitespace-nowrap">
+          <div className="bg-primary/10 rounded-full p-1.5 flex items-center gap-1 border border-white shadow-sm">
+            <button className="bg-primary text-white px-4 py-2 rounded-full text-xs font-black shadow-sm transition-all whitespace-nowrap">
               EN
             </button>
-            <button className="text-gray-400 px-4 py-2 rounded-full text-xs font-black hover:text-[#1b3d1a] transition-all whitespace-nowrap">
+            <button className="text-gray-400 px-4 py-2 rounded-full text-xs font-black hover:text-primary-dark transition-all whitespace-nowrap">
               YO
             </button>
           </div>

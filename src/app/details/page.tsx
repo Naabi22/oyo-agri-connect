@@ -8,19 +8,18 @@ import { useToast } from '@/components/Toast';
 export default function EquipmentDetails() {
   const { showToast } = useToast();
   return (
-    <div className="min-h-screen bg-[#F8F9F8] pb-20">
+    <div className="min-h-screen bg-white pb-20">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-6 pt-28">
-        {/* Breadcrumbs */}
-        <nav className="text-xs text-gray-400 mb-6 flex gap-2">
-          <span>Home</span> &gt; <span>Tractors</span> &gt; <span className="text-primary font-bold">John Deere 5050D</span>
-        </nav>
-
-        <div className="flex flex-col lg:flex-row gap-8">
-
-          {/* LEFT COLUMN: Media & Info */}
+      <main className="max-w-7xl mx-auto pt-32 px-12">
+        <div className="flex flex-col lg:flex-row gap-16">
+          {/* Left: Visualization Column */}
           <div className="lg:w-[65%] space-y-8">
+            {/* Breadcrumbs */}
+            <nav className="text-xs text-gray-400 mb-6 flex gap-2">
+              <span>Home</span> &gt; <span>Tractors</span> &gt; <span className="text-primary font-bold">John Deere 5050D</span>
+            </nav>
+
             {/* Image Gallery Grid */}
             <div className="grid grid-cols-4 gap-4 h-[500px]">
               <div className="col-span-3 bg-neutral-soft rounded-[32px] overflow-hidden relative group">
@@ -88,12 +87,21 @@ export default function EquipmentDetails() {
           {/* RIGHT COLUMN: Sticky Booking Sidebar */}
           <div className="lg:w-[35%]">
             <div className="bg-white p-8 rounded-[40px] border border-gray-100 shadow-xl sticky top-28">
-              <div className="flex justify-between items-end mb-8">
-                <div>
-                  <span className="text-3xl font-black text-primary-dark tracking-tight">₦25,000</span>
-                  <span className="text-gray-400 font-bold text-sm"> / day</span>
+              {/* Price & Primary Action */}
+              <div className="bg-primary text-white p-10 rounded-[48px] shadow-2xl shadow-primary/30 relative overflow-hidden group">
+                <div className="relative z-10">
+                  <p className="text-[12px] font-black uppercase tracking-[0.3em] mb-2 opacity-80">Renting for OCTOBER 2026</p>
+                  <div className="flex items-baseline gap-2 mb-10">
+                    <span className="text-4xl font-black tracking-tight">₦25,000</span>
+                    <span className="text-lg font-bold opacity-60">/ day</span>
+                  </div>
+                  <Link href="/duration">
+                    <button className="w-full bg-white text-primary py-6 rounded-3xl font-black text-xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all">
+                      Rent Now ➔
+                    </button>
+                  </Link>
                 </div>
-                <span className="text-accent text-xs font-black uppercase tracking-widest underline decoration-accent/30 underline-offset-4">Insurance Included</span>
+                <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-white/5 rounded-full blur-3xl group-hover:bg-white/10 transition-colors" />
               </div>
 
               {/* Simplified Calendar Placeholder */}

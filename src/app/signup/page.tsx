@@ -1,20 +1,23 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { User, Phone, MapPin, Mail, ChevronRight, Leaf, ShieldCheck, Tractor } from "lucide-react";
 import { useToast } from "@/components/Toast";
 
 export default function SignupPage() {
     const { showToast } = useToast();
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         showToast("Welcome! Check your phone for a verification code.", "success");
+        setTimeout(() => router.push("/dashboard"), 1500);
     };
     return (
         <div className="min-h-screen bg-[#F8FAF8] relative flex flex-col items-center justify-center p-6 overflow-hidden">
             {/* Soft Gradient Background with illustrations */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,227,26,0.05)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(29,77,26,0.05)_0%,transparent_50%)]" />
             <div className="absolute top-20 right-20 text-primary/5 -rotate-12 transition-transform hover:rotate-0 duration-700">
                 <Tractor size={200} strokeWidth={1} />
             </div>
@@ -94,7 +97,7 @@ export default function SignupPage() {
                     </div>
 
                     {/* Primary Action */}
-                    <button className="w-full bg-primary text-white py-6 rounded-3xl font-black text-xl shadow-2xl shadow-green-200 hover:scale-[1.02] active:scale-95 hover:bg-[#00D018] transition-all flex items-center justify-center gap-3">
+                    <button className="w-full bg-primary text-white py-6 rounded-3xl font-black text-xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all flex items-center justify-center gap-3">
                         Verify Phone
                         <ChevronRight size={24} />
                     </button>

@@ -1,15 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Tractor, Phone, Mail, HelpCircle, Globe } from "lucide-react";
 import { useToast } from "@/components/Toast";
 
 export default function LoginPage() {
     const { showToast } = useToast();
+    const router = useRouter();
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         showToast("Success! Check your messages for the login code.", "success");
+        setTimeout(() => router.push("/dashboard"), 1500);
     };
     return (
         <div className="min-h-screen bg-white relative flex flex-col items-center justify-center p-6 bg-grid-pattern overflow-hidden">
@@ -34,7 +37,7 @@ export default function LoginPage() {
             </div>
 
             {/* Login Card */}
-            <div className="w-full max-w-md bg-white rounded-[48px] p-10 shadow-2xl shadow-green-900/10 border border-neutral-soft relative z-10 transition-all hover:shadow-green-900/20">
+            <div className="w-full max-w-md bg-white rounded-[48px] p-10 shadow-2xl shadow-primary-dark/10 border border-neutral-soft relative z-10 transition-all hover:shadow-primary-dark/20">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl font-black text-primary-dark mb-2">Welcome Back!</h2>
                     <p className="text-gray-400 text-sm font-medium px-4">
@@ -59,7 +62,7 @@ export default function LoginPage() {
                         </div>
                     </div>
 
-                    <button className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-green-100 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+                    <button className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
                         Send Verification Code
                         <span className="text-xl">→</span>
                     </button>

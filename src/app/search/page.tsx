@@ -37,7 +37,7 @@ export default function SearchPage() {
             placeholder="What are you looking for?"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-20 bg-white border-2 border-neutral-soft/50 rounded-[32px] pl-20 pr-8 text-lg font-black text-primary-dark shadow-2xl shadow-green-900/5 focus:border-primary/20 focus:shadow-green-900/10 transition-all outline-none placeholder:text-gray-300"
+            className="w-full h-20 bg-white border border-neutral-soft rounded-[32px] pl-20 pr-8 text-lg font-black text-primary-dark shadow-xl shadow-primary-dark/5 focus:border-primary/20 focus:shadow-primary-dark/10 transition-all outline-none placeholder:text-gray-300"
           />
         </div>
 
@@ -49,8 +49,8 @@ export default function SearchPage() {
               onClick={() => setActiveCategory(cat)}
               className={`flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-sm transition-all whitespace-nowrap
                 ${activeCategory === cat
-                  ? "bg-primary text-white shadow-xl shadow-green-200 scale-105"
-                  : "bg-neutral-soft text-primary-dark hover:bg-neutral"}
+                  ? "bg-primary text-white shadow-xl shadow-primary/20 scale-105"
+                  : "bg-neutral-soft text-primary-dark hover:bg-neutral-soft/70"}
               `}
             >
               {cat === "Near Me" && <Navigation size={18} fill={activeCategory === cat ? "white" : "currentColor"} />}
@@ -65,7 +65,7 @@ export default function SearchPage() {
             filteredEquipment.map((item, i) => (
               <div
                 key={i}
-                className="bg-white rounded-[40px] overflow-hidden border border-neutral-soft/50 shadow-sm hover:shadow-2xl hover:shadow-green-900/5 transition-all duration-500 group"
+                className="bg-white rounded-[40px] overflow-hidden border border-neutral-soft shadow-sm hover:shadow-2xl hover:shadow-primary-dark/5 transition-all duration-500 group"
               >
                 <div className="h-64 bg-neutral-soft relative overflow-hidden flex items-center justify-center">
                   <img
@@ -109,8 +109,8 @@ export default function SearchPage() {
                     </div>
                     <div className="flex gap-2">
                       <button
-                        onClick={() => showToast("Request sent! The owner will confirm shortly.", "success")}
-                        className="bg-primary text-white px-8 py-4 rounded-2xl font-black text-sm shadow-xl shadow-primary/10 hover:scale-[1.05] active:scale-95 transition-all w-full"
+                        onClick={() => showToast("Rental request sent successfully!", "success")}
+                        className="w-full bg-primary text-white py-5 rounded-2xl font-black shadow-xl shadow-primary/10 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all"
                       >
                         Rent Now
                       </button>

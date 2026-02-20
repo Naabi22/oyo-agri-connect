@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Header from '../../components/Header';
 import BottomNav from '../../components/BottomNav';
 import StepIndicator from '../../components/StepIndicator';
@@ -7,6 +8,13 @@ import { useToast } from '@/components/Toast';
 
 export default function OrderSummary() {
   const { showToast } = useToast();
+  const router = useRouter();
+
+  const handleConfirm = () => {
+    showToast("Booking Successful! The owner has been notified.", "success");
+    setTimeout(() => router.push("/dashboard"), 2000);
+  };
+
   return (
     <div className="min-h-screen bg-neutral">
       <Header backHref="/transport" title="Confirm Booking" showLocationSelector />
@@ -67,10 +75,10 @@ export default function OrderSummary() {
         {/* Action Button */}
         <div className="flex justify-center mb-24">
           <button
-            onClick={() => showToast("Request sent to Marcus Omandi! Check your dashboard for updates.", "success")}
-            className="w-full max-w-lg bg-primary text-white py-6 rounded-[32px] font-black text-2xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all"
+            onClick={handleConfirm}
+            className="w-full bg-primary text-white py-6 rounded-3xl font-black text-xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all flex items-center justify-center gap-3"
           >
-            Confirm & Request ➔
+            Confirm & Request Rental
           </button>
         </div>
       </main>

@@ -21,11 +21,11 @@ export default function BottomNav({ activeItem }: BottomNavProps) {
                 const isActive = activeItem === item.id;
                 return (
                     <Link key={item.id} href={item.href} className="flex flex-col items-center gap-1 group">
-                        <span className={`transition-all duration-300 ${isActive ? "text-[#00E31A] scale-110" : "text-gray-300 group-hover:text-gray-400"}`}>
+                        <span className={`transition-all duration-300 ${isActive ? "text-primary scale-110" : "text-gray-300 group-hover:text-gray-400"}`}>
                             <item.Icon size={24} strokeWidth={isActive ? 2.5 : 2} />
                         </span>
                         {isActive && item.label && (
-                            <span className="text-[10px] font-black text-[#00E31A] tracking-widest">{item.label}</span>
+                            <span className="text-[10px] font-black text-primary tracking-widest">{item.label}</span>
                         )}
                     </Link>
                 );
