@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { User, Phone, MapPin, Mail, ChevronRight, Leaf, ShieldCheck, Tractor } from "lucide-react";
 import { useToast } from "@/components/Toast";
