@@ -1,26 +1,61 @@
 "use client";
 
 import Header from '../../components/Header';
-import Link from 'next/link';
-import BottomNav from '../../components/BottomNav';
-import { Star, MapPin, Phone, MessageSquare, ShieldCheck, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
+import { Star, MapPin, Phone, ShieldCheck, Calendar as CalendarIcon } from 'lucide-react';
 import { useToast } from '@/components/Toast';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import Link from 'next/link';
 
 export default function EquipmentDetails() {
   const { showToast } = useToast();
-  const [selectedDays, setSelectedDays] = useState(3);
+  const [selectedDates, setSelectedDates] = useState<number[]>([]);
   const pricePerDay = 15000;
+
+  const handleDateClick = (day: number, isGray: boolean) => {
+    if (isGray) return;
+
+    if (selectedDates.length === 0 || selectedDates.length === 2) {
+      setSelectedDates([day]);
+    } else {
+      const start = selectedDates[0];
+      const end = day;
+      if (end < start) {
+        setSelectedDates([end]);
+      } else {
+        setSelectedDates([start, end]);
+      }
+    }
+  };
+
+  const selectedDaysCount = useMemo(() => {
+    if (selectedDates.length === 2) {
+      return (selectedDates[1] - selectedDates[0]) + 1;
+    }
+    return selectedDates.length === 1 ? 1 : 0;
+  }, [selectedDates]);
+
+  const bookingUrl = useMemo(() => {
+    const params = new URLSearchParams();
+    if (selectedDates.length > 0) {
+      // For demo purposes using November 2024 as shown in UI
+      const startDay = selectedDates[0];
+      const endDay = selectedDates.length === 2 ? selectedDates[1] : selectedDates[0];
+      params.set('startDate', `2024-11-${startDay}`);
+      params.set('endDate', `2024-11-${endDay}`);
+      params.set('days', selectedDaysCount.toString());
+    }
+    return `/location?${params.toString()}`;
+  }, [selectedDates, selectedDaysCount]);
 
   return (
     <div className="min-h-screen bg-white">
       <Header backHref="/search" title="Equipment Details" showLocation />
 
-      <main className="max-w-4xl mx-auto pt-28 pb-32 px-6">
+      <main className="max-w-4xl mx-auto pt-28 pb-40 px-6">
         {/* Hero Image Section */}
         <div className="w-full h-[400px] md:h-[500px] rounded-[40px] overflow-hidden mb-8 shadow-2xl shadow-primary-dark/5">
           <img
-            src="https://images.unsplash.com/photo-1594913785162-e678563c4583?auto=format&fit=crop&q=80&w=1200"
+            src="/images/Tractor 2.jpeg"
             alt="Massey Ferguson 375"
             className="w-full h-full object-cover"
           />
@@ -65,21 +100,46 @@ export default function EquipmentDetails() {
                 {['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map(day => (
                   <div key={day} className="text-[10px] font-bold text-gray-300 mb-2">{day}</div>
                 ))}
-                {/* Simplified Calendar Grid */}
+
                 {Array.from({ length: 14 }).map((_, i) => {
-                  const day = i + 28 > 31 ? i + 28 - 31 : i + 28;
-                  const isSelected = i === 4 || i === 5;
-                  const isGray = i < 4;
+                  const day = i + 28 > 30 ? i + 28 - 30 : i + 28;
+                  const isGray = i < 3; // First 3 days are Oct
+
+                  let isSelected = false;
+                  let isRange = false;
+
+                  if (!isGray) {
+                    if (selectedDates.length === 1 && selectedDates[0] === day) {
+                      isSelected = true;
+                    } else if (selectedDates.length === 2) {
+                      if (day === selectedDates[0] || day === selectedDates[1]) {
+                        isSelected = true;
+                      } else if (day > selectedDates[0] && day < selectedDates[1]) {
+                        isRange = true;
+                      }
+                    }
+                  }
+
                   return (
-                    <div key={i} className={`py-3 font-black text-sm relative cursor-pointer rounded-2xl transition-all
-                      ${isSelected ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105' : ''}
-                      ${isGray ? 'text-gray-200' : isSelected ? '' : 'text-primary-dark hover:bg-neutral-soft'}
-                    `}>
+                    <div
+                      key={i}
+                      onClick={() => handleDateClick(day, isGray)}
+                      className={`py-3 font-black text-sm relative cursor-pointer rounded-2xl transition-all
+                        ${isSelected ? 'bg-primary text-white shadow-lg shadow-primary/20 scale-105 z-10' : ''}
+                        ${isRange ? 'bg-primary/10 text-primary-dark rounded-none' : ''}
+                        ${isGray ? 'text-gray-200 cursor-not-allowed' : isSelected ? '' : 'text-primary-dark hover:bg-neutral-soft'}
+                      `}
+                    >
                       {day}
                     </div>
                   );
                 })}
               </div>
+              <p className="mt-6 text-[10px] font-bold text-gray-400 text-center uppercase tracking-widest">
+                {selectedDates.length === 0 ? "Select rental start date" :
+                  selectedDates.length === 1 ? "Select rental end date" :
+                    `Selected ${selectedDaysCount} days`}
+              </p>
             </div>
           </div>
 
@@ -108,7 +168,10 @@ export default function EquipmentDetails() {
                 <span className="text-gray-300 font-bold ml-1">/ 5.0</span>
               </div>
 
-              <button className="w-full bg-primary/10 text-primary py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-primary/20 transition-all border border-primary/20">
+              <button
+                onClick={() => showToast("Calling Farmer Samuel...", "info")}
+                className="w-full bg-primary/10 text-primary py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-primary/20 transition-all border border-primary/20"
+              >
                 <Phone size={20} />
                 Call Owner
               </button>
@@ -118,18 +181,23 @@ export default function EquipmentDetails() {
       </main>
 
       {/* Sticky Bottom Booking Bar */}
-      <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-xl border-t border-neutral-soft/50 px-6 py-6 z-50 animate-slide-up">
+      <div className="fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t border-neutral-soft/50 px-6 py-8 z-50 animate-slide-up">
         <div className="max-w-4xl mx-auto flex items-center justify-between gap-8">
           <div className="shrink-0">
-            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total ({selectedDays} days)</p>
+            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Total ({selectedDaysCount} days)</p>
             <p className="text-3xl font-black text-primary-dark tracking-tight leading-none">
-              ₦{(pricePerDay * selectedDays).toLocaleString()}
+              ₦{(pricePerDay * selectedDaysCount).toLocaleString()}
             </p>
           </div>
 
-          <Link href="/location" className="flex-1">
+          <Link href={selectedDates.length === 2 ? bookingUrl : "#"} className="flex-1">
             <button
-              className="w-full bg-primary text-white py-6 rounded-3xl font-black text-xl shadow-2xl shadow-primary/20 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark transition-all flex items-center justify-center gap-3"
+              disabled={selectedDates.length < 2}
+              className={`w-full py-6 rounded-3xl font-black text-xl shadow-2xl transition-all flex items-center justify-center gap-3
+                ${selectedDates.length === 2
+                  ? 'bg-primary text-white shadow-primary/20 hover:scale-[1.02] active:scale-95 hover:bg-primary-dark'
+                  : 'bg-gray-100 text-gray-400 cursor-not-allowed shadow-none'}
+              `}
             >
               Request Booking
               <CalendarIcon size={24} />
@@ -137,8 +205,6 @@ export default function EquipmentDetails() {
           </Link>
         </div>
       </div>
-
-      <BottomNav activeItem="search" />
     </div>
   );
 }

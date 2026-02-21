@@ -11,8 +11,8 @@ export default function BottomNav({ activeItem }: BottomNavProps) {
         { id: "home", Icon: Home, label: "HOME", href: "/dashboard" },
         { id: "search", Icon: Search, label: "SEARCH", href: "/search" },
         { id: "bookings", Icon: FileText, label: "MY RENTALS", href: "/summary" },
-        { id: "equipment", Icon: Briefcase, label: "MY EQUIPMENT", href: "/search" },
-        { id: "profile", Icon: User, label: "PROFILE", href: "/dashboard" },
+        { id: "equipment", Icon: Briefcase, label: "MY EQUIPMENT", href: "/my-quipment" },
+        { id: "profile", Icon: User, label: "PROFILE", href: "/profile" },
     ];
 
     return (
