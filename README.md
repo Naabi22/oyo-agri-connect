@@ -3,7 +3,15 @@
 **Oyo Agri Connect** is a modern, peer-to-peer agricultural equipment marketplace designed specifically for farmers in Oyo State, Nigeria. It facilitates the renting and listing of essential farming machinery, bridging the gap between equipment owners and those in need of tools to grow their operations.
 
 ---
+## My Role
+As the Lead Frontend Developer, I was responsible for:
+- **Designing the UI/UX wireframes**.
 
+- **Implementing the core React components**.
+
+- **Ensuring the platform was fully responsive across all devices**.
+
+  ---
 ## Key Features
 
 - **Localized Marketplace**: Find tractors, harvesters, irrigation pumps, and more, sorted by proximity to your farm.
